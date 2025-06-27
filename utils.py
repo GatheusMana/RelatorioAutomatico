@@ -84,7 +84,7 @@ def update_currency(df: pd.DataFrame, exchange_rate: float, currency_columns: li
 #Create a column named Total Amount for analisis
 def set_metrics_table(df: pd.DataFrame, required_columns: list = None) -> Optional[pd.DataFrame]:
     if required_columns is None:
-        required_columns = ["Price", "Quantity Sold", "Dispatch Date"]
+        required_columns = ["Price", "Quantity Sold", "Dispacth Date"]
     try:
         if df.empty:
             raise ValueError("Table cannot be empty")
@@ -120,7 +120,7 @@ def get_brand_sales_table(df: pd.DataFrame, best: bool = True, top_number: int =
         
         total_brands = len(df["Brand"].unique())
         if top_number > total_brands:
-            print(f"Total brands is less then {top_number} -> changing top numebr to fit in the table")
+            print(f"Total brands is less then {top_number} -> changing top number to fit in the table")
             top_number = min(top_number, total_brands)
             
         
@@ -149,7 +149,7 @@ def get_product_sales_table(df: pd.DataFrame, best: bool = True, top_number: int
         
         total_products = len(df["Product Code"].unique())
         if top_number > total_products:
-            print(f"Total products is less then {top_number} -> changing top numebr to fit in the table")
+            print(f"Total products is less then {top_number} -> changing top number to fit in the table")
             top_number = min(top_number, total_products)
 
         product_sales = df.groupby(["Product Code", "Product", "Brand"], as_index=False)["Total Amount"].sum()
